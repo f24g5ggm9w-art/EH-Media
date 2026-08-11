@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Editorial Package — Prepared for EH Media / ProSoundWeb</title>
+<style>
+  :root {
+    --ink: #1a1d1f;
+    --paper: #fbfaf7;
+    --line: #dfdad0;
+    --muted: #6b6459;
+    --card: #ffffff;
+    --live: #c0392b;
+    --install: #1f6f5c;
+    --newprod: #2a5d8a;
+    --feature: #6d4c8f;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; }
+  .demo-banner { background: var(--ink); color: #fff; text-align: center; padding: 10px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; }
+  .demo-banner strong { color: #ffd27a; }
+  header.masthead { max-width: 900px; margin: 0 auto; padding: 40px 24px 20px; text-align: center; border-bottom: 3px solid var(--ink); }
+  header.masthead .kicker { font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  header.masthead h1 { font-size: 46px; margin: 0 0 6px; letter-spacing: -0.5px; }
+  header.masthead p.tagline { font-family: Arial, Helvetica, sans-serif; color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  header.masthead .prepared-for { font-family: Arial, Helvetica, sans-serif; font-size: 13px; background: #f1ece1; display: inline-block; padding: 8px 16px; border-radius: 4px; border: 1px solid var(--line); }
+  .editorial-note { max-width: 780px; margin: 18px auto 0; padding: 14px 20px; background: #fbf6e8; border: 1px solid #e8dcb3; border-radius: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; color: #4a4030; text-align: left; }
+  .editorial-note strong { color: #1a1d1f; }
+  nav.channels { max-width: 900px; margin: 18px auto 0; padding: 0 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; font-family: Arial, Helvetica, sans-serif; }
+  nav.channels a { text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding: 7px 14px; border-radius: 20px; border: 1px solid var(--line); color: var(--ink); }
+  main { max-width: 900px; margin: 0 auto; padding: 30px 24px 60px; }
+  section.article { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 32px 38px; margin-bottom: 26px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .eyebrow { font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: bold; margin-bottom: 10px; }
+  .eyebrow.live { color: var(--live); } .eyebrow.install { color: var(--install); } .eyebrow.newprod { color: var(--newprod); } .eyebrow.feature { color: var(--feature); }
+  section.article h2 { font-size: 26px; margin: 0 0 8px; line-height: 1.28; }
+  section.article .dek { font-size: 16px; color: var(--muted); margin: 0 0 14px; }
+  .byline-row { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--muted); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .byline-row .name { color: var(--ink); font-weight: bold; }
+  section.article p { margin: 0 0 15px; font-size: 16px; }
+  section.article h3 { font-size: 19px; margin: 26px 0 10px; }
+  blockquote.pull { margin: 20px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--line); font-style: italic; color: #333; font-size: 15.5px; }
+  blockquote.pull cite { display: block; margin-top: 6px; font-style: normal; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--muted); }
+  .mfr-links { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: var(--muted); margin-top: 18px; }
+  .author-box { display: flex; gap: 14px; align-items: flex-start; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); font-family: Arial, Helvetica, sans-serif; }
+  .author-avatar { width: 46px; height: 46px; border-radius: 50%; background: var(--feature); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; flex-shrink: 0; }
+  .author-box .aname { font-weight: bold; font-size: 13px; color: var(--ink); }
+  .author-box .abio { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .checked-note { font-family: Arial, Helvetica, sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--line); }
+
+  section.newsletter { background: #14171a; border-radius: 8px; padding: 0; overflow: hidden; margin-bottom: 40px; }
+  .nl-label { font-family: Arial, Helvetica, sans-serif; color: #ffd27a; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; padding: 14px 30px 0; }
+  .nl-inner { background: #ffffff; margin: 14px; border-radius: 4px; font-family: Arial, Helvetica, sans-serif; overflow: hidden; }
+  .nl-header { background: var(--ink); color: #fff; padding: 18px 26px; text-align: center; }
+  .nl-header .nl-title { font-size: 20px; font-weight: bold; }
+  .nl-header .nl-date { font-size: 12px; color: #b9b3a5; margin-top: 4px; }
+  .nl-body { padding: 22px 30px 8px; }
+  .nl-feature-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--live); font-weight: bold; margin-bottom: 6px; }
+  .nl-feature h3 { font-size: 20px; margin: 0 0 8px; }
+  .nl-feature p { font-size: 14px; color: #333; margin: 0 0 6px; }
+  .nl-feature a.readmore { font-size: 13px; color: var(--live); font-weight: bold; text-decoration: none; }
+  .nl-divider { border: none; border-top: 1px solid #e5e1d8; margin: 20px 0; }
+  .nl-news-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: bold; margin-bottom: 10px; }
+  .nl-news-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #f0ede5; }
+  .nl-news-item:last-child { border-bottom: none; }
+  .nl-news-item .nl-headline { font-size: 15px; font-weight: bold; color: var(--ink); margin-bottom: 3px; }
+  .nl-news-item p { font-size: 13.5px; color: #444; margin: 0; }
+  .nl-footer { background: #f5f2ea; padding: 16px 30px; text-align: center; font-size: 11px; color: var(--muted); }
+
+  footer.demo-footer { max-width: 900px; margin: 0 auto 60px; padding: 0 24px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--muted); }
+
+  figure { margin: 0; }
+  .hero-photo { max-width: 900px; margin: 22px auto 0; padding: 0 24px; }
+  .hero-photo img { width: 100%; height: 360px; object-fit: cover; border-radius: 6px; display: block; }
+  .hero-photo figcaption { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: var(--muted); padding: 7px 2px 0; }
+  .article-photo { margin: 0 0 22px; }
+  .article-photo img { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; display: block; }
+  .article-photo figcaption { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: var(--muted); padding: 6px 2px 0; }
+  .nl-feature-photo { margin: 0 0 14px; }
+  .nl-feature-photo img { width: 100%; height: 170px; object-fit: cover; border-radius: 3px; display: block; }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">SAMPLE EDITORIAL PACKAGE — <strong>Not affiliated with or published on ProSoundWeb.com.</strong> Prepared by Marc Colbary as an interview work sample for the Site Editor role.</div>
+
+<header class="masthead">
+  <div class="kicker">Portfolio Demonstration</div>
+  <h1>PSW Style Sample</h1>
+  <p class="tagline">Three news items + two Study Hall–style features, formatted to match ProSoundWeb's actual house style — news brief structure, byline conventions, and first-person contributor voice for long-form pieces.</p>
+  <div class="prepared-for">Prepared for EH Media / ProSoundWeb interview — Marc Colbary, August 2026</div>
+  <div class="editorial-note"><strong>Editorial note on sourcing:</strong> Before writing this, I reviewed ProSoundWeb's own recent coverage (news archive and Study Hall) to make sure none of these pieces duplicate something PSW has already run. The two Study Hall features below intentionally build on stories PSW has already published — that's the "aggregates relevant content" muscle the job posting calls out, not new reporting. The three news items cover installs/products I confirmed aren't yet in PSW's archive as of this week.</div>
+</header>
+
+<nav class="channels">
+  <a href="#live">Live Sound</a>
+  <a href="#install">Install</a>
+  <a href="#newprod">New Products</a>
+  <a href="#church-feature">Study Hall: Church</a>
+  <a href="#recording-feature">Study Hall: Recording</a>
+  <a href="#newsletter">PSW Daily Mockup</a>
+</nav>
+
+<figure class="hero-photo">
+  <img src="https://images.pexels.com/photos/34629095/pexels-photo-34629095.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Concert stage with full line array PA and lighting rig">
+  <figcaption>Photo: Pexels (free-use license) — placeholder art for this demo package, standing in for the kind of lead art PSW runs on its own stories.</figcaption>
+</figure>
+
+<main>
+
+  <section class="article" id="live">
+    <div class="eyebrow live">Live Sound</div>
+    <h2>Clair Global Deploys Adamson VGt For D-Block Europe's "PTSD2" Arena Tour</h2>
+    <p class="dek">The UK/Ireland run relies on 74 VGt elements and 44 VGs subwoofers to fill rooms like the O2 and Co-op Live.</p>
+    <div class="byline-row"><span class="name">PSW Staff</span> · August 2026</div>
+
+    <figure class="article-photo">
+      <img src="https://images.pexels.com/photos/34585137/pexels-photo-34585137/free-photo-of-outdoor-concert-speaker-system-setup.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Outdoor concert PA line array speaker stack">
+      <figcaption>Photo: Pexels (free-use license) — stand-in art; not an actual photo of the Adamson VGt rig described.</figcaption>
+    </figure>
+
+    <p>Clair Global has fielded an Adamson VGt line array system for D-Block Europe's "PTSD2" arena tour, which routed the UK hip-hop duo through Ireland and the UK in support of their latest mixtape. The run included stops at 3Arena Dublin, Glasgow's OVO Hydro, M&S Bank Arena Liverpool, Co-op Live in Manchester, and multiple nights at London's O2.</p>
+    <p>The main PA centers on 74 Adamson VGt elements paired with 44 VGs subwoofers, supported by eight CS7P and four CS10P subs and a Gateway Milan-compliant Ethernet switch tying the rig together on the network side. Monitor world runs on Adamson MG10 wedges, reinforced by CS118 and CS119 subwoofers for stage-side low end.</p>
+    <p>FOH engineer Raphael Williams and monitor engineer Morgan Moore headed up the audio team for the tour, with production manager Femi Bello and systems engineer Aaron Boothe handling day-to-day system deployment across the run's arena-scale venues.</p>
+    <p>The VGt platform has increasingly become Clair's go-to for mid-size arena work that doesn't call for a full large-format touring rig — enough output for rooms like the O2, without the truck count of a stadium-scale deployment.</p>
+
+    <div class="mfr-links">Adamson Systems · Clair Global</div>
+    <div class="checked-note">Checked against ProSoundWeb's Live Sound archive and Adamson tag page (Aug 2026) — no existing PSW coverage of this tour found.</div>
+  </section>
+
+  <section class="article" id="install">
+    <div class="eyebrow install">Install</div>
+    <h2>LD Systems Completes 1,194-Box Fulcrum Acoustic Overhaul At NRG Stadium For World Cup</h2>
+    <p class="dek">Everything hangs from the stadium's fixed super truss, not the moving roof — a 24-year-old rigging solution the new system just inherited.</p>
+    <div class="byline-row"><span class="name">PSW Staff</span> · August 2026</div>
+
+    <figure class="article-photo">
+      <img src="https://images.pexels.com/photos/34585133/pexels-photo-34585133/free-photo-of-outdoor-pa-speaker-system-against-clear-blue-sky.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Outdoor PA speaker system mounted against open sky, stadium-style rigging">
+      <figcaption>Photo: Pexels (free-use license) — stand-in art; not an actual photo of NRG Stadium's system.</figcaption>
+    </figure>
+
+    <p>Ahead of hosting seven 2026 World Cup matches, NRG Stadium in Houston underwent a full bowl audio overhaul led by integration firm LD Systems — the same company that integrated the venue's original audio system back in 2002 — working with consultants WJHW on behalf of Harris County and the Houston Texans. The new system totals 1,194 Fulcrum Acoustic loudspeakers across the bowl, concourses, and support spaces, including AHC443 high-output horn-loaded arrays and CS218LWR dual-18-inch weather-resistant subwoofers, supplemented by CX1226-MT200, CX1226, CX1595, CX826-MT120, FH1566, and FH1595 models for coverage zones outside the main bowl.</p>
+    <p>The more interesting engineering story is where all of that hangs. NRG's roof is built from two independently retracting panels, which means nothing can be rigged to the roof structure itself — it moves. Instead, the entire bowl system is mounted to the stadium's fixed "super truss," a structural element separate from the roof that sits roughly 250 feet above the field. That constraint, not just weatherproofing, is what has shaped the audio system's design since 2002.</p>
+
+    <blockquote class="pull">
+      "Because this stadium has a retractable roof, we can't hang anything from it and therefore everything had to be mounted onto the super truss. This constraint defined both the original system design and upgrade."
+      <cite>— Kevin Broussard, Sales Engineer, LD Systems</cite>
+    </blockquote>
+
+    <p>LD Systems reused the original custom rigging frames from the 2002 install to hoist the new loudspeakers into the exact same positions on the super truss — frames engineered so boxes can be lowered for service without disturbing alignment. In 24 years, the team had never actually had to lower one for maintenance. Every enclosure is also weather-rated, since the position stays exposed to the elements any time the roof is open. LD Systems cut overall system weight by 40 percent compared to the previous rig in the process, a meaningful number 250 feet up.</p>
+    <p>Control runs through a Q-SYS platform built around redundant Core 5200 processors for mission-critical reliability, with Core 610 processors handling suite-level audio separately. Amplification is split by zone: Powersoft Unica amplifiers drive the main bowl and concourse systems, while Crown DCI amplifiers cover clubs, back-of-house, and ancillary spaces. Front of house runs through a Yamaha Rivage PM5, with Shure Axient handling wireless mics and IEM coordination. The suite upgrade is its own story — more than 260 suites now get dedicated speakers, control panels, and selectable audio sources (bowl, TV, radio, postgame, Bluetooth) instead of relying on bowl spill or TV feeds that used to lag by up to four seconds.</p>
+    <p>LD Systems had roughly six months to strip the old rig and complete the full site-wide upgrade — tight for a stadium of NRG's size — but the standout number from the project is on the back end: final bowl-wide tuning was completed in a single six-hour session, ahead of a tournament that drew up to 72,220 fans per match in Houston.</p>
+
+    <blockquote class="pull">
+      "Our deep knowledge of NRG Stadium has allowed us to be extremely precise during this exciting new phase of the building. We knew exactly what this job required and that familiarity ultimately saw us back on the project."
+      <cite>— Kevin Broussard, Sales Engineer, LD Systems</cite>
+    </blockquote>
+
+    <div class="mfr-links">Fulcrum Acoustic · LD Systems · WJHW · Q-SYS · Powersoft · Crown</div>
+    <div class="checked-note">Checked against ProSoundWeb's Install archive and Fulcrum Acoustic tag page (Aug 2026) — PSW has covered NRG Stadium and Fulcrum separately before, but not this specific World Cup deployment. Super truss/rigging detail and quotes sourced from <a href="https://fohonline.com/newsroom/news/ld-systems-upgrades-houston-stadium-prior-to-world-cup-soccer/" target="_blank" rel="noopener">FOH's coverage</a>.</div>
+  </section>
+
+  <section class="article" id="newprod">
+    <div class="eyebrow newprod">New Products</div>
+    <h2>Violet Audio Introduces dMix 128 Networked Digital Mixing System</h2>
+    <p class="dek">128 channels, 88 buses, and sub-millisecond latency in a single rack-mount unit built for install and broadcast work.</p>
+    <div class="byline-row"><span class="name">PSW Staff</span> · August 2026</div>
+
+    <figure class="article-photo">
+      <img src="https://images.pexels.com/photos/35307143/pexels-photo-35307143/free-photo-of-close-up-of-professional-audio-mixing-console.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Close-up of a professional digital mixing console">
+      <figcaption>Photo: Pexels (free-use license) — stand-in art; not an actual photo of the dMix 128.</figcaption>
+    </figure>
+
+    <p>Violet Audio has begun shipping the dMix 128, a networked digital mixing system aimed at installations where reliability and channel count matter more than a physical control surface. The FPGA-based unit handles 128 channels and 88 buses at sample rates up to 96 kHz with sub-millisecond system latency, packed into a single rack-mount chassis with 32 mic/line inputs and 24 outputs.</p>
+    <p>Control runs through an HTML5 browser interface accessible from a computer or tablet, with no dedicated control surface required — a deliberate choice for fixed installs where a full physical console isn't practical or necessary. Networking includes MADI and AES67 I/O, and the unit ships with redundant power supplies and built-in effects processing.</p>
+    <p>The dMix 128 is available now at $5,995<sup><a href="#dmix-price-note" style="text-decoration:none;">[1]</a></sup>, positioning it as a networked alternative for install and broadcast applications that need console-grade routing and processing without console-scale hardware.</p>
+
+    <div class="mfr-links">Violet Audio</div>
+    <div class="checked-note">Checked against ProSoundWeb's New Products archive and Violet Audio tag page (Aug 2026) — no existing PSW coverage of the dMix 128 found.<br id="dmix-price-note">[1] Price confirmed at $5,995 USD via <a href="https://www.sweetwater.com/store/detail/dMix128--violet-audio-dmix-128-digital-rack-mixer" target="_blank" rel="noopener">Sweetwater's product listing</a> and reported the same by <a href="https://www.soundonsound.com/news/violet-audios-dmix-128-now-shipping" target="_blank" rel="noopener">Sound on Sound</a>; not listed directly on Violet Audio's own product page.</div>
+  </section>
+
+  <section class="article" id="church-feature">
+    <div class="eyebrow feature">Study Hall — Church Sound</div>
+    <h2>Three Different Rooms, Three Different Fixes — And One Diagnosis That Keeps Showing Up</h2>
+    <p class="dek">A diamond-shaped sanctuary, an octagon, and a gym walked into 2026 with the same underlying problem: nobody had actually engineered how sound moved through the room.</p>
+    <div class="byline-row"><span class="name">Marc Colbary</span> · August 2026</div>
+
+    <figure class="article-photo">
+      <img src="https://images.pexels.com/photos/34328505/pexels-photo-34328505/free-photo-of-vibrant-worship-service-with-music-and-lights.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Worship service stage with band and colored stage lighting">
+      <figcaption>Photo: Pexels (free-use license) — stand-in art; not a photo of any of the three churches discussed.</figcaption>
+    </figure>
+
+    <p>I keep a loose file of worship audio install stories, mostly because I like watching how different integrators solve problems with completely different gear. Three from this year caught my attention together — not because they used the same platform (they didn't: EAW, d&b, Martin Audio) or even the same kind of fix, but because each one turned out to be a room-geometry problem wearing a "we need a better system" costume.</p>
+
+    <h3>Three Rooms, Three Different Culprits</h3>
+    <p>PSW covered Christ Covenant Church in Tennessee earlier this year — a vaulted, diamond-shaped worship center that had fought uneven coverage and harshness for years. Here the culprit really was low end: subwoofers sitting under the stage were creating room nodes and anti-nodes, dead spots and boomy spots that never lined up with where people actually sat. Four EAW AC6 ADAPTive columns went up in two vertical pairs, and the subs moved to a flown, center-mono position between them. The room's standing-wave problem went away, and the church now runs comfortably at 85-90 dB SPL with even coverage.</p>
+    <p>Central Assembly of God in Pennsylvania had a completely different disease. Its 20-year-old system in an octagonal sanctuary wasn't fighting room modes — it was fighting geometry that a conventional left/right rig can't cover evenly. "With the old system, if it sounded good in the front, it was way too quiet in the back," integrator Brandon Cecil of Fresh Tech told PSW. The fix wasn't relocating anything low-frequency; it was a d&b Soundscape system built around a DS100 Matrix Processor running En-Scene spatial processing, driving five 24S point-source loudspeakers and eight 5S fills across the octagon, with six B6 subs run in inframode and an Allen & Heath Avantis at front of house. En-Scene let the team give each of the church's 14 musicians and 7 singers a distinct, fixed position in the mix — something the old system structurally couldn't do regardless of how loud it ran.</p>
+    <p>Fellowship Bible Church in Sewell, New Jersey is a third variation again: a multipurpose gymnasium pressed into service as a sanctuary, working against hard surfaces, exposed structure, and high ceilings. The fix wasn't a directivity choice alone — two Martin Audio TORUS constant-curvature line arrays went in flown, paired with a single SX218 dual-18 subwoofer and four CDD15 loudspeakers covering the back of the room as delays, and acoustic absorption panels went up on the room itself to bring down the reflections the arrays couldn't solve by themselves. It's a directivity-plus-treatment story, not a boxes-only one.</p>
+
+    <h3>Same Diagnosis, Different Prescription</h3>
+    <p>None of these were "the system isn't loud enough" problems, and that's really the point — I'd be misreading my own file if I told you subwoofer placement was the throughline here, because it demonstrably wasn't at Central Assembly or Fellowship. What was consistent across all three is the diagnostic step that came before any gear got specified: figuring out exactly what this particular room's shape was doing to the sound before choosing a fix. In Tennessee that meant tracing a harshness complaint back to where the low end physically sat. In Pennsylvania it meant recognizing that no amount of L/R loudness would ever solve an octagon's coverage problem, and that the fix was spatial, not tonal. In New Jersey it meant accepting that no amount of well-aimed line array was going to beat a gym's hard, parallel walls on its own, so acoustic treatment went in alongside the new system rather than being left out of the budget.</p>
+    <p>That's a more useful takeaway for readers than "move your subs" as a universal fix would be — the tactic has to follow the diagnosis, and the diagnosis is different every time the room is.</p>
+
+    <h3>What I'd Watch For Next</h3>
+    <p>If anything, I'd expect more coverage that leads with the diagnosis instead of the gear list — what specifically the room was doing wrong before naming the loudspeaker that fixed it. All three of these were planned system upgrades, not stopgap fixes, which suggests the diagnostic step is happening earlier in the process at churches that have the lead time to do it right rather than react to a failure.</p>
+
+    <div class="author-box">
+      <div class="author-avatar">MC</div>
+      <div><div class="aname">Marc Colbary</div><div class="abio">Digital asset and content management specialist with a background in production coordination; writes on worship and install audio trends.</div></div>
+    </div>
+    <div class="checked-note">Builds on ProSoundWeb's own published coverage of <a href="https://www.prosoundweb.com/central-assembly-of-god-in-pennsylvania-elevates-worship-sound-with-db-audiotechnik/" target="_blank" rel="noopener">Central Assembly of God</a>, Christ Covenant Church, and PSW's July 2026 report on Fellowship Bible Church — cited as evidence, not re-reported as news. Two corrections made against the primary sources after an earlier draft overreached: Central Assembly's fix is spatial processing for coverage consistency, not subwoofer relocation; Fellowship Bible's Martin Audio TORUS is a constant-curvature line array, not a column array, and its fix combined the array with acoustic absorption panels, not directivity alone.</div>
+  </section>
+
+  <section class="article" id="recording-feature">
+    <div class="eyebrow feature">Study Hall — Recording</div>
+    <h2>AI Says It Can Mix Your Session. Here's Where I'd Actually Let It.</h2>
+    <p class="dek">The tools are real. The judgment calls still aren't theirs to make.</p>
+    <div class="byline-row"><span class="name">Marc Colbary</span> · August 2026</div>
+
+    <figure class="article-photo">
+      <img src="https://images.pexels.com/photos/36269938/pexels-photo-36269938/free-photo-of-audio-engineer-mixing-in-professional-studio.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Audio engineer mixing at a console in a professional studio">
+      <figcaption>Photo: Pexels (free-use license) — stand-in art.</figcaption>
+    </figure>
+
+    <p>Every DAW update this year seems to ship with some flavor of "AI-assisted" feature, and I've noticed engineers falling into one of two camps: the ones who assume it's all marketing, and the ones who've quietly started letting it do more of the boring parts of their session. Having spent time with a few of these tools, I think both camps are half right.</p>
+
+    <h3>Where It Actually Earns Its Keep</h3>
+    <p>Avid's Pro Tools 2026.4 update leaned further into AI-powered speech-to-text, which speeds up dialogue and lyric-driven workflows in a way that's genuinely hard to argue with — nobody's creative judgment is on the line when a machine transcribes a scratch vocal for editing reference. Similarly, the SoundFlow integration that landed in Pro Tools brought over 1,700 prebuilt macros with AI assistance for things like stem bouncing, track creation, and session navigation. That's the category where I think AI belongs right now: repetitive, mechanical, rules-based tasks that eat session time without requiring taste.</p>
+    <p>Session prep, file management, batch renaming, click-track generation, basic gain-riding on dialogue for consistency before a human pass — all of it is fair game. It's the same argument for why nobody misses manually numbering audio regions anymore. Automating the tedious part of the job doesn't threaten the part of the job that actually requires a trained ear.</p>
+
+    <h3>Where I Still Want A Human</h3>
+    <p>Where I get more skeptical is anything that touches a creative decision — EQ moves that are about the vibe of a mix rather than fixing a measurable problem, compression settings chosen for feel, level balances that are really about storytelling rather than loudness matching. Those decisions are downstream of a hundred small choices about what a song, or a sermon, or a broadcast is supposed to feel like to the person listening, and that's context a model doesn't have unless someone hands it to them explicitly, at which point you've mostly just built a very elaborate preset.</p>
+    <p>I'd also flag that "AI-assisted" is doing a lot of marketing work right now, and it's worth being specific in copy about what a feature actually automates versus what it merely suggests. Readers in this industry can tell the difference, and vague AI claims tend to erode trust in the coverage faster than almost anything else I can think of.</p>
+
+    <h3>The Practical Takeaway</h3>
+    <p>My rule of thumb: if the task has a right answer that doesn't depend on taste, let the tool have it. If the task's "right answer" is actually a matter of opinion, keep a human in the loop — and expect that to remain true for a while yet, no matter how good the next model gets at pattern-matching what a good mix generally sounds like.</p>
+
+    <div class="author-box">
+      <div class="author-avatar">MC</div>
+      <div><div class="aname">Marc Colbary</div><div class="abio">Digital asset and content management specialist with a background in production coordination; writes on production workflow and tooling trends.</div></div>
+    </div>
+    <div class="checked-note">References Avid Pro Tools 2026.4 and SoundFlow AI features as reported in PSW's own New Products coverage; framed as original analysis, not a rewrite of those items.</div>
+  </section>
+
+  <section class="newsletter" id="newsletter">
+    <div class="nl-label">Newsletter Format Mockup — Matches PSW Daily Spec From Job Posting</div>
+    <div class="nl-inner">
+      <div class="nl-header">
+        <div class="nl-title">PSW DAILY</div>
+        <div class="nl-date">Sample Edition — Prepared for Interview, August 2026</div>
+      </div>
+      <div class="nl-body">
+        <div class="nl-feature">
+          <div class="nl-feature-label">Today's Feature</div>
+          <figure class="nl-feature-photo">
+            <img src="https://images.pexels.com/photos/34328505/pexels-photo-34328505/free-photo-of-vibrant-worship-service-with-music-and-lights.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Worship service stage with band and colored stage lighting">
+          </figure>
+          <h3>Three Different Rooms, Three Different Fixes — And One Diagnosis That Keeps Showing Up</h3>
+          <p>A diamond-shaped sanctuary, an octagon, and a gym — three worship spaces, three different systems, and the same lesson: diagnose the room before you spec the gear.</p>
+          <a class="readmore" href="#church-feature">Read the full story →</a>
+        </div>
+        <hr class="nl-divider">
+        <div class="nl-news-label">Also In Today's PSW Daily</div>
+        <div class="nl-news-item">
+          <div class="nl-headline">LD Systems Completes 1,194-Box Fulcrum Overhaul At NRG Stadium</div>
+          <p>A 40% lighter rig, six months to build, six hours to tune — ready in time for seven World Cup matches in Houston.</p>
+        </div>
+        <div class="nl-news-item">
+          <div class="nl-headline">Clair Global Deploys Adamson VGt For D-Block Europe's UK Arena Run</div>
+          <p>74 VGt elements and 44 VGs subs fill rooms including the O2 and Co-op Live on the "PTSD2" tour.</p>
+        </div>
+        <div class="nl-news-item">
+          <div class="nl-headline">Violet Audio Ships dMix 128 Networked Mixing System</div>
+          <p>128 channels, 88 buses, sub-millisecond latency, no control surface required — built for install and broadcast.</p>
+        </div>
+        <div class="nl-news-item">
+          <div class="nl-headline">AI Says It Can Mix Your Session. Here's Where I'd Actually Let It.</div>
+          <p>A working look at which AI-assisted production features actually save time — and which ones still need a human ear.</p>
+        </div>
+      </div>
+      <div class="nl-footer">This is a formatting mockup only — content drawn from the sample articles above for demonstration purposes.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="demo-footer">
+  Built as a work sample for the Site Editor — Pro Audio Market interview. Facts sourced from public reporting (see checked-against notes under each piece); prose is original. Not published to or affiliated with ProSoundWeb.com, Live Sound International, Church Sound, or EH Media.
+</footer>
+
+</body>
+</html>
